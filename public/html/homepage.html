@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElderCam | your best elderly Cam</title>
+	<link rel="stylesheet" href="../css/mainStyle.css" />
+	<link rel="stylesheet" href="../css/login.css" />
+</head>
+<body>
+    <div class="top-bar"></div>
+
+    <div class="side-bar"></div>
+    
+    <div class="content">
+        <div class="welcome-container"></div>
+
+        <!-- ----- Register Form ----- -->
+        <div class="tabs-container">
+			<div class="tabs">
+				<input
+					type="radio"
+					class="tabs__radio"
+					name="tabs-example"
+					id="tab1"
+					checked
+				/>
+				<label for="tab1" class="tabs__label">Register</label>
+				<div class="tabs__content">
+					<form
+						id="register"
+						action="/register"
+						method="POST"
+					>
+						<h3>Register</h3>
+						<label for="username" class="form-group">
+							<input
+								tvpe="username"
+								name="username"
+								class="form-control"
+								placeholder="username"
+							/>
+						</label>
+						<label for="username" class="form-group">
+							<input
+								tvpe="password"
+								name="password"
+								class="form-control"
+								placeholder="password"
+							/>
+						</label>
+						<label for="username" class="form-group">
+							<input
+								tvpe="password"
+								name="password2"
+								class="form-control"
+								placeholder="confirm password"
+							/>
+						</label>
+						<div class="btn btnboder">
+							<input
+								type="submit"
+								value="Register"
+								class="btn btn-register"
+							/>
+						</div>
+						
+					</form>
+				</div>
+
+				<!-- ----- logIn Form -----   -->
+				<input
+					type="radio"
+					class="tabs__radio"
+					name="tabs-example"
+					id="tab2"
+				/>
+				<label for="tab2" class="tabs__label">Login</label>
+				<div class="tabs__content">
+					<form id="login">
+						<h3>Login</h3>
+						<label for="username" class="form-group">
+							<input
+								tvpe="username"
+								name="username"
+								class="form-control"
+								placeholder="username"
+							/>
+						</label>
+						<label for="username" class="form-group">
+							<input
+								tvpe="password"
+								name="password"
+								class="form-control"
+								placeholder="password"
+							/>
+						</label>
+						<div class="btn btnboder">
+							<input
+								type="submit"
+								value="Login"
+								class="btn btn-login"
+							/>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <div class="footer"></div>
+
+    <script type="module" src="/public/js/loginpage.js"></script>
+</body>
+</html>
