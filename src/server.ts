@@ -1,9 +1,9 @@
 import express from "express";
-import {logger} from "./utils/logger";
+import {logger} from "../utils/logger";
 import { Request, Response } from 'express'
 import expressSession from 'express-session'
 import { Client } from 'pg'
-import { checkPassword, hashPassword } from "./hash";
+import { checkPassword, hashPassword } from "../hash";
 import path from "path";
 
 export const client = new Client({
