@@ -31,6 +31,12 @@ app.use(
 	})
 )
 
+// ----- For debug -----
+app.use((req, res, next) => {
+	logger.debug(`Path: ${req.path},,, Method: ${req.method}`);
+	next();
+  });
+
 // ----- Register -----
 
 app.post('/register', async (req, res) => {
@@ -103,6 +109,12 @@ app.post('/login',async (req: Request, res: Response) => {
 
 // ----- The line to serve static files -----
 app.use(express.static(path.join(__dirname, 'public')))
+
+// ----- 404 Not Found -----
+app.use((req, res) => {
+	res.sendFile(path.join(__dirname, "public", "404.html"));
+  });
+  
 
 app.listen(PORT, () => {
 logger.info(`listening to PORT: ${PORT}`);
