@@ -1,1 +1,44 @@
-/* ----- Register and Sign In Form ----- */
+/* ----- logIn Form ----- */
+.content{
+
+	background: linear-gradient(#424153,#F4F4F5);
+}
+.welcome-container{
+	width: 300px;
+	height: 100px;
+	background-color: #B7B7B7;
+	border: 1px solid #000000;
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.welcome{
+	color: #0138FF;
+	
+}
+.login-content{
+	background-color: #B7B7B7;
+	width: 300px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #000000;
+	border-radius: 15px;
+}
+.login-username,.login-password{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.username{
+	margin-right: 10px;
+}
+.password{
+	margin-right: 13px;
+}
+.btn{
+	border-radius: 5px;
+}

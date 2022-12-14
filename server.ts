@@ -1,9 +1,9 @@
 import express from "express";
-import {logger} from "../utils/logger";
+import {logger} from "./utils/logger";
 import { Request, Response } from 'express'
 import expressSession from 'express-session'
 import { Client } from 'pg'
-import { checkPassword, hashPassword } from "../hash";
+import { checkPassword, hashPassword } from "./hash";
 import path from "path";
 
 export const client = new Client({
@@ -53,8 +53,8 @@ app.post('/register', async (req, res) => {
 		await client.query(
 			/*SQL*/
 			`
-			INSERT INTO users (username, passwords, sign_up_date)
-			VALUES ($1, $2, $3)
+			INSERT INTO users (username, passwords)
+			VALUES ($1, $2)
 			`,
 			[username, hashed, time]
 		)
@@ -102,7 +102,7 @@ app.post('/login',async (req: Request, res: Response) => {
 })
 
 // ----- The line to serve static files -----
-app.use(express.static(path.join(__dirname, 'public','html')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(PORT, () => {
 logger.info(`listening to PORT: ${PORT}`);
