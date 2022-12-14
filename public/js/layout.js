@@ -1,6 +1,7 @@
 window.onload = () => {
   loadHeader();
   loadNavBar();
+  loadFooter();
 }
 
 function loadHeader() {
@@ -46,6 +47,7 @@ function loadNavBar() {
   homeLogo.classList.add("navLogoSize");
   homeLogo.setAttribute("src",`./asset/home.png`);
   const homeText = document.createElement("div");
+  homeText.classList.add("navText")
   homeText.innerText = "Home";
   const camDiv = document.createElement("div");
   camDiv.classList.add("camDiv","navShare");
@@ -53,6 +55,7 @@ function loadNavBar() {
   camLogo.classList.add("navLogoSize");
   camLogo.setAttribute("src",`./asset/cam.png`);
   const camText = document.createElement("div");
+  camText.classList.add("navText")
   camText.innerText = "Cameras";
   const settingDiv = document.createElement("div");
   settingDiv.classList.add("settingDiv","navShare");
@@ -60,6 +63,7 @@ function loadNavBar() {
   settingLogo.setAttribute("src",`./asset/setting.png`);
   settingLogo.classList.add("navLogoSize");
   const settingText = document.createElement("div");
+  settingText.classList.add("navText")
   settingText.innerText = "Setting";
   const aboutDiv = document.createElement("div");
   aboutDiv.classList.add("aboutDiv", "navShare");
@@ -67,6 +71,7 @@ function loadNavBar() {
   aboutLogo.setAttribute("src",`./asset/about.png`);
   aboutLogo.classList.add("navLogoSize");
   const aboutText = document.createElement("div");
+  aboutText.classList.add("navText")
   aboutText.innerText = "About";
 
   nav.appendChild(container);
@@ -82,4 +87,12 @@ function loadNavBar() {
   container.appendChild(aboutDiv);
   aboutDiv.appendChild(aboutLogo);
   aboutDiv.appendChild(aboutText);
+}
+
+function loadFooter() {
+  const footer = document.querySelector(".footer");
+  const footerText = document.createElement("div");
+  footerText.classList.add("copyright");
+  footerText.innerText = "ElderRing/ All rights reserved."
+  footer.appendChild(footerText)
 }

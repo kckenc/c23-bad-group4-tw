@@ -3,7 +3,8 @@
   display: flex;
   justify-content: space-between;
   background-color: #0e0d16;
-  color:white
+  color:white;
+  height: 10vh;
 }
 
 .left{
@@ -46,16 +47,56 @@
   background-color: #0e0d16;
   color: white;
   width: 400px;
-  height: 100vh;
+  height: 80vh;
+
 }
 
 .navShare{
   display: flex;
   align-items: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 35px;
+  border-radius: 20px;
+  margin: 0px 20px;
+}
+
+.navShare:hover{
+  background-color: #88878D;
+  cursor:pointer;
+}
+
+.navShare:active{
+  background-color: #88878D;
+}
+
+.navText{
+  font-size: 40px;
+  padding-left: 80px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .navLogoSize{
   height: 50px;
   width: 50px;
   filter: brightness(0) invert(1);
+}
+
+.contentContainer{
+  display: flex;
+}
+
+/*-----footer-----*/
+.footer{
+  background-color: #0e0d16;
+  height: 4.9vh;
+  color:white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.copyright{
+padding-top:15px;
 }
