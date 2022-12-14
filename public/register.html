@@ -4,36 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElderCam | your best elderly Cam</title>
-	<link rel="stylesheet" href="../css/mainStyle.css" />
-	<link rel="stylesheet" href="../css/login.css" />
+    <title>Elder Ring | your best elderly Cam</title>
+	<link rel="stylesheet" href="./css/mainStyle.css" />
+	<link rel="stylesheet" href="./css/login.css" />
 </head>
 <body>
-    <div class="top-bar"></div>
+    <header class="header"></header>
 
     <div class="side-bar"></div>
     
     <div class="content">
-        <div class="welcome-container"></div>
+        <div class="welcome-container">
+			<div>login or register to access</div>
+			<div>Elder Ring</div> 
+		</div>
 
         <!-- ----- Register Form ----- -->
-        <div class="tabs-container">
-			<div class="tabs">
-				<input
-					type="radio"
-					class="tabs__radio"
-					name="tabs-example"
-					id="tab1"
-					checked
-				/>
-				<label for="tab1" class="tabs__label">Register</label>
-				<div class="tabs__content">
+
+				<div>Register
+				<div class="register-content">
 					<form
 						id="register"
 						action="/register"
 						method="POST"
 					>
-						<h3>Register</h3>
 						<label for="username" class="form-group">
 							<input
 								tvpe="username"
@@ -107,10 +101,10 @@
 					</form>
 				</div>
 			</div>
-		</div>
+
     </div>
 
-    <div class="footer"></div>
+    <footer></footer>
 
     <script type="module" src="./js/loginpage.js"></script>
 </body>
