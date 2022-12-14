@@ -2,6 +2,7 @@
 import type { Request, Response } from "express";
 import { UserController } from "../controller/UserController";
 import { UserService } from "../service/UserService";
+// import { getMockRequest, getMockResponse } from "./utils";
 
 jest.mock("../service/UserService");
 
@@ -59,4 +60,3 @@ describe("UserController Test Case", () => {
         expect(res.json).toBeCalledTimes(1); 
       });
 });
-
