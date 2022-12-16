@@ -1,21 +1,23 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import {logger} from "./utils/logger";
-import { Request, Response } from 'express'
+// import { Request, Response } from 'express'
 import expressSession from 'express-session'
-import { Client } from 'pg'
-import { checkPassword, hashPassword } from "./hash";
+import pg from 'pg'
+
+// import { checkPassword, hashPassword } from "./utils/hash";
 import path from "path";
 import http from 'http';
 import {Server as SocketIO} from 'socket.io';
 
-
-export const client = new Client({
+export const dbclient = new pg.Client({
 	database: process.env.DB_NAME,
 	user: process.env.DB_USER,
 	password: process.env.DB_PASS
 })
-
-client.connect()
+dbclient.connect()
 
 const PORT = 8080;
 
@@ -50,75 +52,85 @@ app.use((req, res, next) => {
 	next();
   });
 
+// ----- Mocking ----- //
+
+import { UserService } from "./service/UserService";
+import { UserController } from "./controller/UserController";
+
+const userService = new UserService(dbclient);
+export const userController = new UserController(userService);
+
+
+
 // ----- Register -----
 
-app.post('/register', async (req, res) => {
-	const { username, password } = req.body
-	console.log(username)
+// app.post('/register', async (req, res) => {
+// 	const { username, password } = req.body
+// 	console.log(username)
 
-	const isExistAcc = await client.query(
-		`select * from customer where username = $1`,
-		[username]
-	)
+// 	const isExistAcc = await dbclient.query(
+// 		`select * from customer where username = $1`,
+// 		[username]
+// 	)
 
-	const isExistAccRows = isExistAcc.rows
+// 	const isExistAccRows = isExistAcc.rows
 
-	console.log(isExistAccRows)
+// 	console.log(isExistAccRows)
 
-	if (username && password && isExistAccRows.length === 0) {
-		let time = new Date().toISOString()
-		console.log('no exist acc')
-		let hashed = await hashPassword(password)
-		await client.query(
-			/*SQL*/
-			`
-			INSERT INTO users (username, passwords)
-			VALUES ($1, $2)
-			`,
-			[username, hashed, time]
-		)
+// 	if (username && password && isExistAccRows.length === 0) {
+// 		let time = new Date().toISOString()
+// 		console.log('no exist acc')
+// 		let hashed = await hashPassword(password)
+// 		await dbclient.query(
+// 			/*SQL*/
+// 			`
+// 			INSERT INTO users (username, passwords,)
+// 			VALUES ($1, $2, $3)
+// 			`,
+// 			[username, hashed, time]
+// 		)
 
-		if (req.session) {
-		}
-		req.session['user'] = {
-			username
-		}
-		res.redirect('/')
-	} else {
-		res.status(400).json({ message: 'Invalid Email or Password!!!' })
-	}
-})
+// 		if (req.session) {
+// 		}
+// 		req.session['user'] = {
+// 			username
+// 		}
+// 		res.redirect('/')
+// 	} else {
+// 		res.status(400).json({ message: 'Invalid Email or Password!!!' })
+// 	}
+// })
 
 // ----- logIn -----
 
-app.post('/login',async (req: Request, res: Response) => {
-	const { username, password } = req.body
-	const customerRows = (
-		await client.query(`select * from customer where username = $1`,[username])
-	).rows
+// app.post('/login',async (req: Request, res: Response) => {
+// 	const { username, password } = req.body
+// 	const customerRows = (
+// 		await dbclient.query(`select * from customer where username = $1`,[username])
+// 	).rows
 
-	if (!customerRows[0]) {
-		console.log('no exist acc', req.session['user'])
-		return res.status(401).json({ message: '你個嘢壞咗！！' })
-	}
-	const match = await checkPassword(
-		password,
-		customerRows[0]['password_hash']
-	)
+// 	if (!customerRows[0]) {
+// 		console.log('no exist acc', req.session['user'])
+// 		return res.status(401).json({ message: '你個嘢壞咗！！' })
+// 	}
+// 	const match = await checkPassword(
+// 		password,
+// 		customerRows[0]['password_hash']
+// 	)
 
-	if (match) {
-		if (req.session) {
-			req.session['user'] = {
-				username: customerRows[0]['email']
-			}
-			console.log('Acc & Pw is match', req.session['user'])
-			return res.status(200).json({ message: '成功登入！！' })
-		}
-	}
+// 	if (match) {
+// 		if (req.session) {
+// 			req.session['user'] = {
+// 				username
+// 			}
+// 			console.log('Acc & Pw is match', req.session['user'])
+// 			return res.status(200).json({ message: '成功登入！！' })
+// 		}
+// 	}
 
-	console.log('PW Wrong', req.session['user'])
-	return res.status(400).json({ message: '你個野壞！！' })
-})
+// 	console.log('PW Wrong', req.session['user'])
+// 	return res.status(400).json({ message: '你個野壞！！' })
+// })
 
 // ----- The line to serve static files -----
 app.use(express.static(path.join(__dirname, 'public')))
