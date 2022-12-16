@@ -1,7 +1,11 @@
+console.log("123")
 window.onload = () => {
+  console.log("HIHI")
+  // logIn();
   loadHeader();
   loadNavBar();
   loadFooter();
+
 }
 
 function loadHeader() {

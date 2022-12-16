@@ -1,23 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/layout.css" />
-  <title>Elder Ring</title>
-</head>
-<body>
-  <header class ="header">
-  </header>
-  <div class="contentContainer">
-    <nav class="sideNav"></nav>
-    <div></div>
-  </div>
-  <footer class="footer">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Elder Ring | your best elderly Cam</title>
+        <link rel="stylesheet" href="./css/layout.css" />
+	    <link rel="stylesheet" href="./css/login.css" />
+    </head>
+    <body>
+        <header class="header"></header>
 
-  </footer>
-  
-  <script src="./js/layout.js"></script>
-</body>
+        <div class="contentContainer">
+        <nav class="sideNav"></nav>
+
+        <div class="content">
+            <div class="welcome-container">
+			<div class="welcome-tips">Please login or register to access</div>
+			<div class="company">Elder Ring</div> 
+		</div>
+
+    <!-- ----- login Form ----- -->
+
+        <div class="login-content">
+            <form id="login">
+                <div class="login-username">
+                <div class="username">Username:</div>
+                <label for="username" class="form-group">
+                    <input
+                        tvpe="username"
+                        name="username"
+                        class="form-control"
+                    />
+                </label>
+            
+            </div>
+            <div class="login-password">
+                <div class="password">Password:</div>
+                <label for="username" class="form-group">
+                    <input
+                        tvpe="password"
+                        name="password"
+                        class="form-control"
+                    />
+                </label>
+            
+            </div>
+            <div class="btn-container">
+                <div class="btn">
+                    <input type="button" value="Register" class="btn-register"/>
+                </div>
+                <div class="btn">
+                    <input type="submit" value="Login" class="btn-login"/>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+        <footer class="footer"></footer>
+        <script src="./js/loginpage.js"></script>
+        <script src="./js/layout.js"></script>
+        
+        
+    </body>
 </html>

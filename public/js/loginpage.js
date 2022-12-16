@@ -1,8 +1,5 @@
-window.onload = async () => {
-	LogIn()
-}
-
-function LogIn() {
+function logIn() {
+	console.log("im work")
 		document.querySelector('#login').addEventListener('submit', async (e) => {
 				e.preventDefault()
 				const form = e.target

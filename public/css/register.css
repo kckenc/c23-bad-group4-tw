@@ -1,0 +1,80 @@
+/* ----- Register Form ----- */
+.content{
+	width: 100vw;
+	background: linear-gradient(#424153,#F4F4F5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}	
+.welcome-container{
+	width: 600px;
+	height: 100px;
+	background-color: #B7B7B7;
+	border: 1px solid #B7B7B7;
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items:flex-start;
+	flex-direction: column;
+	margin-bottom: 100px;
+	padding: 100px;
+	font-size: 30px;
+}
+.welcome-tips{
+	color: #0138FF;
+	font-weight: bolder;
+	text-shadow: 2px 2px 2px #0000006a;
+	font-size: 35px;
+}
+.company{
+	text-shadow: 2px 2px 2px #0000006a;
+	font-size: 35px;
+}
+.login-content{
+	background-color: #B7B7B7;
+	width: 600px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #B7B7B7;
+	border-radius: 15px;
+	padding: 100px;
+	font-size: 30px;
+}
+.login-username,.login-password{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.username{
+	margin-right: 10px;
+}
+.password{
+	margin-right: 13px;
+}
+.btn{
+	width: 100px;
+	height: 50px;
+}
+.btn-register{
+	background-color: #272E33;
+	color: #ffffff;
+	width: 130px;
+	height: 50px;
+	text-decoration: none;
+	border-radius: 10px;
+	font-size: 25px;
+}
+
+.btn-container{
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
+}
+.form-control{
+	height: 30px;
+	width: 200px;
+	border: #ffffff;
+}

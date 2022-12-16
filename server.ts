@@ -6,6 +6,7 @@ import { Client } from 'pg'
 import { checkPassword, hashPassword } from "./hash";
 import path from "path";
 
+
 export const client = new Client({
 	database: process.env.DB_NAME,
 	user: process.env.DB_USER,
@@ -30,7 +31,11 @@ app.use(
 		saveUninitialized: true
 	})
 )
-
+app.post('/hi',async (req , res , next) => {
+	console.log(req.body)
+	console.log("hi")
+	next()
+})
 // ----- For debug -----
 app.use((req, res, next) => {
 	logger.debug(`Path: ${req.path},,, Method: ${req.method}`);

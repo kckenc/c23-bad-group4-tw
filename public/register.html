@@ -5,67 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elder Ring | your best elderly Cam</title>
-	<link rel="stylesheet" href="./css/mainStyle.css" />
+	<link rel="stylesheet" href="./css/layout.css" />
 	<link rel="stylesheet" href="./css/register.css" />
 </head>
 <body>
     <header class="header"></header>
 
-    <div class="side-bar"></div>
+	<div class="contentContainer">
+    <div class="sideNav"></div>
     
     <div class="content">
         <div class="welcome-container">
-			<div>login or register to access</div>
-			<div>Elder Ring</div> 
+			<div class="welcome-tips">Please enter your information</div>
+			<div class="company">Elder Ring</div> 
 		</div>
 
         <!-- ----- Register Form ----- -->
 
-				<div>Register</div>
-				<div class="register-content">
-					<form
-						id="register"
+		<div class="login-content">
+            <form id="register"
 						action="/register"
 						method="POST"
-					>
-						<label for="username" class="form-group">
-							<input
-								tvpe="username"
-								name="username"
-								class="form-control"
-								placeholder="username"
-							/>
-						</label>
-						<label for="username" class="form-group">
-							<input
-								type="password"
-								name="password"
-								class="form-control"
-								placeholder="password"
-							/>
-						</label>
-						<label for="username" class="form-group">
-							<input
-								type="password"
-								name="password2"
-								class="form-control"
-								placeholder="confirm password"
-							/>
-						</label>
-						<div class="btn">
-							<input
-								type="submit"
-								value="Register"
-								class="btn btn-register"
-							/>
-						</div>
-						
-					</form>
-		
-    </div>
-	</div>
-    <footer></footer>
+						>
+                <div class="login-username">
+                <div class="username">Username:</div>
+                <label for="username" class="form-group">
+                    <input
+                        tvpe="username"
+                        name="username"
+                        class="form-control"
+                    />
+                </label>
+            
+            </div>
+            <div class="login-password">
+                <div class="password">Password:</div>
+                <label for="username" class="form-group">
+                    <input
+                        tvpe="password"
+                        name="password"
+                        class="form-control"
+                    />
+                </label>
 
-    <script type="module" src="./js/loginpage.js"></script>
+				<div class="password">Confirm Password:</div>
+                <label for="username" class="form-group">
+                    <input
+                        tvpe="password"
+                        name="password2"
+                        class="form-control"
+                    />
+                </label>
+            
+            </div>
+            <div class="btn-container">
+                <div class="btn">
+                    <input type="submit" value="Register" class="btn-register"/>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+        <footer class="footer"></footer>
+
+    <script src="./js/layout.js"></script>
 </body>
 </html>
