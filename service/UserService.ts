@@ -1,27 +1,23 @@
+import { InvalidLoginError } from "./../utils/error";
+import type { Knex } from "knex";
+import { checkPassword } from "../utils/hash";
+import { table } from "../utils/table";
 import { User } from "./models";
-import pg from "pg";
-import { hashPassword } from "../utils/hash";
 
 export class UserService {
-  constructor(private dbClient: pg.Client) {}
+  constructor(private knex: Knex) {}
 
-  async getUserByUsername(username: string) {
-    const queryResult = await this.dbClient.query<User>(
-      "SELECT * FROM users WHERE username = $1",
-      [username]
-    );
+  async checkLogin(username: string, plainPassword: string) {
+    const user = await this.knex<User>(table.USER)
+      .select("id", "username", "password")
+      .where("username", username)
+      .first();
+      console.log(user)
 
-    return queryResult.rows[0];
-  }
+    if (user && (await checkPassword(plainPassword, user.password))) {
+      return user;
+    }
 
-  async createUser(username: string, password: string) {
-    const hashedPassword = await hashPassword(password);
-    const insertResult = await this.dbClient.query<User>(
-      /*SQL */ `INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id, username, password`,
-      [username, hashedPassword]
-    );
-
-    // update user
-    return insertResult.rows[0];
+    throw new InvalidLoginError();
   }
 }

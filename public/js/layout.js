@@ -100,3 +100,4 @@ function loadFooter() {
   footerText.innerText = "ElderRing/ All rights reserved."
   footer.appendChild(footerText)
 }
+

@@ -3,23 +3,27 @@ dotenv.config();
 
 import express from "express";
 import {logger} from "./utils/logger";
+import path from "path";
 // import { Request, Response } from 'express'
 import expressSession from 'express-session'
-import pg from 'pg'
-
+// import pg from 'pg'
 // import { checkPassword, hashPassword } from "./utils/hash";
 import path from "path";
 import http from 'http';
 import {Server as SocketIO} from 'socket.io';
 
-export const dbclient = new pg.Client({
-	database: process.env.DB_NAME,
-	user: process.env.DB_USER,
-	password: process.env.DB_PASS
-})
-dbclient.connect()
 
-const PORT = 8080;
+import Knex from "knex";
+import knexConfig from "./knexfile"; 
+
+export const knex = Knex(knexConfig[process.env.NODE_ENV ?? "development"]);
+
+// export const dbclient = new pg.Client({
+// 	database: process.env.DB_NAME,
+// 	user: process.env.DB_USER,
+// 	password: process.env.DB_PASS
+// })
+// dbclient.connect()
 
 const app = express();
 const server = new http.Server(app);
@@ -50,15 +54,18 @@ app.post('/hi',async (req , res , next) => {
 app.use((req, res, next) => {
 	logger.debug(`Path: ${req.path},,, Method: ${req.method}`);
 	next();
-  });
+  }); 
 
-// ----- Mocking ----- //
+// ----- Connect to server ----- //
 
 import { UserService } from "./service/UserService";
 import { UserController } from "./controller/UserController";
 
-const userService = new UserService(dbclient);
+const userService = new UserService(knex);
 export const userController = new UserController(userService);
+
+import { userRoutes } from "./router/userRoutes";
+app.use("/user", userRoutes )
 
 
 
@@ -131,6 +138,8 @@ export const userController = new UserController(userService);
 // 	console.log('PW Wrong', req.session['user'])
 // 	return res.status(400).json({ message: '你個野壞！！' })
 // })
+
+
 
 // ----- The line to serve static files -----
 app.use(express.static(path.join(__dirname, 'public')))
