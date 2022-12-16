@@ -4,7 +4,7 @@
   justify-content: space-between;
   background-color: #0e0d16;
   color:white;
-  height: 10vh;
+  height: 130px;
 }
 
 .left{
@@ -47,7 +47,7 @@
   background-color: #0e0d16;
   color: white;
   width: 400px;
-  height: 80vh;
+  height: 900px;
 
 }
 
@@ -89,7 +89,7 @@
 /*-----footer-----*/
 .footer{
   background-color: #0e0d16;
-  height: 4.9vh;
+  height: 60px;
   color:white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
