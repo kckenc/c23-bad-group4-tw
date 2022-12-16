@@ -5,6 +5,8 @@ import expressSession from 'express-session'
 import { Client } from 'pg'
 import { checkPassword, hashPassword } from "./hash";
 import path from "path";
+import http from 'http';
+import {Server as SocketIO} from 'socket.io';
 
 
 export const client = new Client({
@@ -18,6 +20,12 @@ client.connect()
 const PORT = 8080;
 
 const app = express();
+const server = new http.Server(app);
+const io = new SocketIO(server);
+
+io.on('connection', function (socket) {
+  console.log(socket);
+});
 // ----- Need this for form submissions -----
 app.use(express.urlencoded({ extended: true }))
 // ----- To read json files -----
@@ -121,7 +129,7 @@ app.use((req, res) => {
   });
   
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
 logger.info(`listening to PORT: ${PORT}`);
 })
 

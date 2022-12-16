@@ -1,5 +1,7 @@
 # c23-bad-group4-tw
+
 <<<<<<< HEAD
+
 - 1 左上角MC2
 - 2 右上角揀server地區
 - 3 建立 instance (Launch instance)
@@ -11,6 +13,4 @@
 - 9 configure storage set to 30GB
 - 10 Termination protection -> Enable
 - 11 右下角Launch instance
-=======
-YzIzLWJhZC1ncm91cDQtdHcK
->>>>>>> f4f483c (updated .env.example & README.md)
+- // socket io for front end alert and 框閃同有聲-->禁入去trigger is_solved

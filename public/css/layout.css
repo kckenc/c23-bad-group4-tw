@@ -36,9 +36,9 @@
   text-align: center;
 }
 
-.welcome{
+.w\elcome{
   font-size: 30px;
-  padding-right: 15px;
+  pa\dding-right: 15px;
 }
 
 /* -----Nav----- */
@@ -47,7 +47,7 @@
   background-color: #0e0d16;
   color: white;
   width: 400px;
-  height: 900px;
+  height: 100vh;
 
 }
 
