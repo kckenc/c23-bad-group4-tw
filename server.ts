@@ -47,7 +47,7 @@ app.use(
 )
 app.post('/hi',async (req , res , next) => {
 	console.log(req.body)
-	console.log("hi")
+	console.log(`${req.body.name}`+ " "+"left!!!!!")
 	next()
 })
 // ----- For debug -----
