@@ -13,4 +13,18 @@
 - 9 configure storage set to 30GB
 - 10 Termination protection -> Enable
 - 11 右下角Launch instance
+- 
 - // socket io for front end alert and 框閃同有聲-->禁入去trigger is_solved
+- html camera.html
+- routes sign out route
+- check login hide the type box
+- check login show hi name
+- notification: change the color border-notice
+- detection: turn on / off notice
+
+
+socket io 要係html加socket 嘅script 同index.js 加 ``const socket = io.connect()``
+
+socket.emit (server to specific client side)
+
+io.emit (broadcast to all client)

@@ -28,9 +28,7 @@ const app = express();
 const server = new http.Server(app);
 const io = new SocketIO(server);
 
-io.on('connection', function (socket) {
-  console.log(socket);
-});
+
 // ----- Need this for form submissions -----
 app.use(express.urlencoded({ extended: true }))
 // ----- To read json files -----
@@ -147,8 +145,16 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use((req, res) => {
 	res.sendFile(path.join(__dirname, "public", "404.html"));
   });
+<<<<<<< HEAD
   
 const PORT = 8080;
+=======
+
+io.on('connection', function (socket) {
+  console.log(socket);
+});
+
+>>>>>>> 725c308 (ken)
 server.listen(PORT, () => {
 logger.info(`listening to PORT: ${PORT}`);
 })
