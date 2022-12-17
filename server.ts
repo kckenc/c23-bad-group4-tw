@@ -3,7 +3,6 @@ dotenv.config();
 
 import express from "express";
 import {logger} from "./utils/logger";
-import path from "path";
 // import { Request, Response } from 'express'
 import expressSession from 'express-session'
 // import pg from 'pg'
@@ -149,7 +148,7 @@ app.use((req, res) => {
 	res.sendFile(path.join(__dirname, "public", "404.html"));
   });
   
-
+const PORT = 8080;
 server.listen(PORT, () => {
 logger.info(`listening to PORT: ${PORT}`);
 })
