@@ -1,12 +1,13 @@
-console.log("123")
+import {closeAlertButton} from "../js/camera"
 window.onload = () => {
-  console.log("HIHI")
+  
   // logIn();
   loadHeader();
   loadNavBar();
   loadFooter();
-  initLoginForm();
-  register()
+  closeAlertButton()
+  // initLoginForm();
+  // register()
 }
 
 function loadHeader() {
@@ -102,38 +103,38 @@ function loadFooter() {
   footer.appendChild(footerText)
 }
 
-function initLoginForm() {
-	document
-	  .querySelector("#login")
-	  .addEventListener("submit", async (e) => {
-		e.preventDefault();
-		const form = e.target;
-		const formBody = {
-		  username: form.username.value,
-		  password: form.password.value,
-		};
-		const resp = await fetch("/login", {
-		  method: "POST",
-		  headers: {
-			"content-type": "application/json;charset=utf-8",
-		  },
-		  body: JSON.stringify(formBody),
-		});
-		if (resp.status === 200) {
-		  window.location = "/user.html";
-		} else {
-		  const data = await resp.json();
-		  alert(data.message);
-		}
-	  });
-  }
+// function initLoginForm() {
+// 	document
+// 	  .querySelector("#login")
+// 	  .addEventListener("submit", async (e) => {
+// 		e.preventDefault();
+// 		const form = e.target;
+// 		const formBody = {
+// 		  username: form.username.value,
+// 		  password: form.password.value,
+// 		};
+// 		const resp = await fetch("/login", {
+// 		  method: "POST",
+// 		  headers: {
+// 			"content-type": "application/json;charset=utf-8",
+// 		  },
+// 		  body: JSON.stringify(formBody),
+// 		});
+// 		if (resp.status === 200) {
+// 		  window.location = "/user.html";
+// 		} else {
+// 		  const data = await resp.json();
+// 		  alert(data.message);
+// 		}
+// 	  });
+//   }
   
 
-function register() {
-const registerbutton = document.querySelector('#register')
-registerbutton.addEventListener('click', (e) => {
-	e.preventDefault()
-	console.log('click')
-	window.location.href = 'register.html'
-})
-}
+// function register() {
+// const registerbutton = document.querySelector('#register')
+// registerbutton.addEventListener('click', (e) => {
+// 	e.preventDefault()
+// 	console.log('click')
+// 	window.location.href = 'register.html'
+// })
+// }

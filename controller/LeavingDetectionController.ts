@@ -6,13 +6,25 @@ export class LeavingDetectionController {
   constructor(private leavingDetectionService:LeavingDetectionService){} //, private io: SocketIO
   leaving = async (req:Request, res: Response) => {
     const name = req.body.name;
-    const result = (await this.leavingDetectionService.checkLeaving(name)) as any as number;
+    const result = (await this.leavingDetectionService.checkLeaving(name)) as any;
     if (!result) {
       res.status(400).json({ message: "invalid name" });
       return;
     }
-    await this.leavingDetectionService.updateIsSolvedAlert(result);
+    await this.leavingDetectionService.updateIsSolvedAlert(result.id);
     res.json({ message: "update successfully" })
-    console.log(result)
+    
+  }
+
+  solved = async( req:Request, res:Response) => {
+    const name = "dylan";
+    const result = (await this.leavingDetectionService.checkLeaving(name)) as any;
+    console.log("jhsgdjshagdjhas",result)
+    if (!result) {
+      res.status(400).json({ message: "invalid name" });
+      return;
+    }
+    await this.leavingDetectionService.closeAlert(result.id);
+    res.json({ message: "update successfully" }) 
   }
 }
