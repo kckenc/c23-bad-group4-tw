@@ -4,8 +4,10 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./js/layout.js"></script>
         <link rel="stylesheet" href="./css/layout.css" />
         <link rel="stylesheet" href="./css/camera.css" />
+        
         <title>Elder Ring</title>
     </head>
     <body>
@@ -24,16 +26,19 @@
 
               <div class="cam-container">
                 <div>Room A</div>
-                <iframe class="revert dylan" id="dylan" src="http://192.168.160.78:5431" width="350" height="200">
+                <iframe class="revert" src="http://192.168.160.78:5431" width="350" height="200">
                 </iframe>
+                <button class="close-alert" data-user="dylan">close alert</button>
                 <div class="elder-name">Dylan</div>
                 <div>Room B</div>
-                <iframe class="revert ken" id="dylan" src="http://192.168.160.149:5430" width="350" height="200">
+                <iframe class="revert" src="http://192.168.160.149:5430" width="350" height="200">
                 </iframe>
+                <button class="close-alert" data-user="ken">close alert</button>
                 <div class="elder-name">Ken</div>
                 <div>Room C</div>
-                <iframe class="revert kyle" id="dylan" src="http://192.168.160.25:5432" width="350" height="200">
+                <iframe class="revert" src="http://192.168.160.25:5432" width="350" height="200">
                 </iframe>
+                <button class="close-alert" data-user="kyle">close alert</button>
                 <div class="elder-name">Kyle</div>
               </div>
               
@@ -43,7 +48,7 @@
       </div>
       <footer class="footer"></footer>
 
-        <script type="module" src="./js/layout.js"></script>
+        
         <!-- <script  src="./js/camera.js"></script> -->
         <!-- <script src="/socket.io/socket.io.js"></script> -->
     </body>

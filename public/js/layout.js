@@ -1,16 +1,25 @@
-import {closeAlertButton} from "../js/camera"
+// import {closeAlertButton} from "../js/camera"
 window.onload = () => {
-  
+  console.log("hihih")
   // logIn();
   loadHeader();
   loadNavBar();
   loadFooter();
+  
   closeAlertButton()
   // initLoginForm();
   // register()
 }
-
+function closeAlertButton() {
+	const el = document.querySelector('.close-alert')
+    el.addEventListener('click', async () => {
+        console.log(el.dataset.user)
+		await fetch(`/bye?name=${el.dataset.user}`)
+		
+	})
+}
 function loadHeader() {
+  console.log("im header");
   const header = document.querySelector(".header");
   const leftSide = document.createElement("div");
   leftSide.classList.add("left")
@@ -44,6 +53,7 @@ function loadHeader() {
 }
 
 function loadNavBar() {
+  console.log("im navbar");
   const nav = document.querySelector(".sideNav");
   const container = document.createElement("div");
   container.classList.add("navContainer");
@@ -96,6 +106,7 @@ function loadNavBar() {
 }
 
 function loadFooter() {
+  console.log("im footer");
   const footer = document.querySelector(".footer");
   const footerText = document.createElement("div");
   footerText.classList.add("copyright");

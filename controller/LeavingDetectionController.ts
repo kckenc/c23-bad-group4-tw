@@ -17,7 +17,7 @@ export class LeavingDetectionController {
   }
 
   solved = async( req:Request, res:Response) => {
-    const name = "dylan";
+    const name = req.query.name as string;
     const result = (await this.leavingDetectionService.checkLeaving(name)) as any;
     console.log("jhsgdjshagdjhas",result)
     if (!result) {
