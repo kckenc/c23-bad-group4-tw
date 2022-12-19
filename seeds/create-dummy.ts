@@ -8,7 +8,7 @@ export async function seed(knex: Knex): Promise<void> {
   // await knex("table_name").del();
   await knex('users').del();
   await knex('elderly').del();
-  await knex('cameras').del();
+  // await knex('cameras').del();
   const users = [
     { username: "kyle", password: await bcrypt.hash("1234", SALT_ROUNDS) },
     { username: "ken", password: await bcrypt.hash("1234", SALT_ROUNDS) },
@@ -16,11 +16,10 @@ export async function seed(knex: Knex): Promise<void> {
   ];
 
   const elderly = [
-    {name: "mary", description: ""},
-    {name: "betty",description: ""},
-    {name: "john",description: ""},
-    {name: "tracy",description: ""},
-    {name: "scarlett",description: ""},
+    {name: "kyle"},
+    {name: "dylan"},
+    {name: "ken"},
+
   ];
 
   const room = [
@@ -33,5 +32,5 @@ export async function seed(knex: Knex): Promise<void> {
   // Inserts seed entries
   await knex("users").insert(users);
   await knex("elderly").insert(elderly);
-  await knex("cameras").insert(room);
+  await knex("room").insert(room);
 }

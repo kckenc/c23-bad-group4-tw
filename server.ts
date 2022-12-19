@@ -5,11 +5,12 @@ import express from "express";
 import {logger} from "./utils/logger";
 // import { Request, Response } from 'express'
 import expressSession from 'express-session'
-// import pg from 'pg'
+import pg from 'pg'
 // import { checkPassword, hashPassword } from "./utils/hash";
 import path from "path";
 import http from 'http';
 import {Server as SocketIO} from 'socket.io';
+
 
 
 import Knex from "knex";
@@ -17,12 +18,12 @@ import knexConfig from "./knexfile";
 
 export const knex = Knex(knexConfig[process.env.NODE_ENV ?? "development"]);
 
-// export const dbclient = new pg.Client({
-// 	database: process.env.DB_NAME,
-// 	user: process.env.DB_USER,
-// 	password: process.env.DB_PASS
-// })
-// dbclient.connect()
+export const dbclient = new pg.Client({
+	database: process.env.DB_NAME,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASS
+})
+dbclient.connect()
 
 const app = express();
 const server = new http.Server(app);
@@ -42,11 +43,18 @@ app.use(
 		saveUninitialized: true
 	})
 )
-app.post('/hi',async (req , res , next) => {
-	console.log(req.body)
-	console.log(`${req.body.name}`+ " "+"left!!!!!")
-	next()
-})
+// app.post('/hi',async (req , res) => {
+// 	const elder = req.body.name;
+// 	console.log(`${req.body.name}`+ " "+"left!!!!!")
+//   const elderly = (await dbclient.query(`SELECT * FROM elderly WHERE elderly.name = $1`, [elder])).rows;
+
+// })
+import { LeavingDetectionService } from "./service/LeavingDetectionService";
+import { LeavingDetectionController } from "./controller/LeavingDetectionController";
+const leavingDetectionService = new LeavingDetectionService(knex);
+export const leavingDetectionController = new LeavingDetectionController(leavingDetectionService) //, io
+import { leavingDetectionRoutes } from "./router/leavingDetectionRoutes";
+app.use("/", leavingDetectionRoutes);
 // ----- For debug -----
 app.use((req, res, next) => {
 	logger.debug(`Path: ${req.path},,, Method: ${req.method}`);
@@ -62,6 +70,7 @@ const userService = new UserService(knex);
 export const userController = new UserController(userService);
 
 import { userRoutes } from "./router/userRoutes";
+
 app.use("/user", userRoutes )
 
 
@@ -143,18 +152,23 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // ----- 404 Not Found -----
 app.use((req, res) => {
+  console.log(req.session["elderName"]);
+  
 	res.sendFile(path.join(__dirname, "public", "404.html"));
   });
-<<<<<<< HEAD
+
+
   
 const PORT = 8080;
-=======
 
-io.on('connection', function (socket) {
+
+io.on('connection', (socket) =>{
   console.log(socket);
+
+  
 });
 
->>>>>>> 725c308 (ken)
+
 server.listen(PORT, () => {
 logger.info(`listening to PORT: ${PORT}`);
 })

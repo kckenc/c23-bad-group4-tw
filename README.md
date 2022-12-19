@@ -22,9 +22,14 @@
 - notification: change the color border-notice
 - detection: turn on / off notice
 
-
 socket io 要係html加socket 嘅script 同index.js 加 ``const socket = io.connect()``
 
 socket.emit (server to specific client side)
 
 io.emit (broadcast to all client)
+
+/hi route save 入database   no inside cam => is_solve = false
+
+if is_solve = false trigger 閃邊
+
+click div to  change to is_solve = true and no 閃

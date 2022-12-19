@@ -23,7 +23,7 @@ export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable(roomTableName, (table)=>{
     table.increments();
     table.string("room_tag");
-    table.string("user_id").unsigned().notNullable;
+    table.integer("user_id").unsigned().notNullable;
     table.foreign("user_id").references(`${userTableName}.id`);
   })
 
