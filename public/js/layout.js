@@ -105,14 +105,14 @@ function loadNavBar() {
   aboutDiv.appendChild(aboutText);
 }
 
-function loadFooter() {
-  console.log("im footer");
-  const footer = document.querySelector(".footer");
-  const footerText = document.createElement("div");
-  footerText.classList.add("copyright");
-  footerText.innerText = "ElderRing/ All rights reserved."
-  footer.appendChild(footerText)
-}
+// function loadFooter() {
+//   console.log("im footer");
+//   const footer = document.querySelector(".footer");
+//   const footerText = document.createElement("div");
+//   footerText.classList.add("copyright");
+//   footerText.innerText = "ElderRing/ All rights reserved."
+//   footer.appendChild(footerText)
+// }
 
 // function initLoginForm() {
 // 	document

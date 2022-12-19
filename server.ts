@@ -2,47 +2,45 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
-import {logger} from "./utils/logger";
+import { logger } from "./utils/logger";
 // import { Request, Response } from 'express'
-import expressSession from 'express-session'
-import pg from 'pg'
+import expressSession from "express-session";
+import pg from "pg";
 // import { checkPassword, hashPassword } from "./utils/hash";
 import path from "path";
-import http from 'http';
-import {Server as SocketIO} from 'socket.io';
-
-
+import http from "http";
+import { Server as SocketIO } from "socket.io";
 
 import Knex from "knex";
-import knexConfig from "./knexfile"; 
+import knexConfig from "./knexfile";
 
 export const knex = Knex(knexConfig[process.env.NODE_ENV ?? "development"]);
 
 export const dbclient = new pg.Client({
-	database: process.env.DB_NAME,
-	user: process.env.DB_USER,
-	password: process.env.DB_PASS
-})
-dbclient.connect()
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+});
+dbclient.connect();
 
 const app = express();
 const server = new http.Server(app);
 const io = new SocketIO(server);
 
-
 // ----- Need this for form submissions -----
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 // ----- To read json files -----
-app.use(express.json())
+app.use(express.json());
 
 // ----- For expressSession -----
 app.use(
-	expressSession({
-		secret: Math.random().toString(32).slice(2),
-		resave: true,
-		saveUninitialized: true
-	})
-)
+  expressSession({
+    secret: Math.random().toString(32).slice(2),
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
 // app.post('/hi',async (req , res) => {
 // 	const elder = req.body.name;
 // 	console.log(`${req.body.name}`+ " "+"left!!!!!")
@@ -52,14 +50,17 @@ app.use(
 import { LeavingDetectionService } from "./service/LeavingDetectionService";
 import { LeavingDetectionController } from "./controller/LeavingDetectionController";
 const leavingDetectionService = new LeavingDetectionService(knex);
-export const leavingDetectionController = new LeavingDetectionController(leavingDetectionService) //, io
+export const leavingDetectionController = new LeavingDetectionController(
+  leavingDetectionService,
+  io
+); //, io
 import { leavingDetectionRoutes } from "./router/leavingDetectionRoutes";
 app.use("/", leavingDetectionRoutes);
 // ----- For debug -----
 app.use((req, res, next) => {
-	logger.debug(`Path: ${req.path},,, Method: ${req.method}`);
-	next();
-  }); 
+  logger.debug(`Path: ${req.path},,, Method: ${req.method}`);
+  next();
+});
 
 // ----- Connect to server ----- //
 
@@ -71,9 +72,7 @@ export const userController = new UserController(userService);
 
 import { userRoutes } from "./router/userRoutes";
 
-app.use("/user", userRoutes )
-
-
+app.use("/user", userRoutes);
 
 // ----- Register -----
 
@@ -145,31 +144,25 @@ app.use("/user", userRoutes )
 // 	return res.status(400).json({ message: '你個野壞！！' })
 // })
 
-
-
 // ----- The line to serve static files -----
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, "public")));
 
 // ----- 404 Not Found -----
 app.use((req, res) => {
   console.log(req.session["elderName"]);
-  
-	res.sendFile(path.join(__dirname, "public", "404.html"));
-  });
 
-
-  
-const PORT = 8080;
-
-
-io.on('connection', (socket) =>{
-  console.log(socket);
-
-  
+  res.sendFile(path.join(__dirname, "public", "404.html"));
 });
 
+const PORT = 8080;
+
+io.on("connection", (socket) => {
+  socket.on("chat message", (msg) => {
+	console.log("hi",msg)
+    io.emit("chat message", msg);
+  });
+});
 
 server.listen(PORT, () => {
-logger.info(`listening to PORT: ${PORT}`);
-})
-
+  logger.info(`App running on  http://localhost:${PORT}/socket-demo.html`);
+});
