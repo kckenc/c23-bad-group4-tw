@@ -3,8 +3,8 @@ import { LeavingDetectionService } from "../service/LeavingDetectionService";
 import { Server as SocketIO } from "socket.io";
 
 export class LeavingDetectionController {
-  constructor(private leavingDetectionService: LeavingDetectionService, private io: SocketIO) {} //, private io: SocketIO
-  leaving = async (req: Request, res: Response) => {
+  constructor(private leavingDetectionService:LeavingDetectionService, private io: SocketIO){} //, private io: SocketIO
+  leaving = async (req:Request, res: Response) => {
     const name = req.body.name;
     const result = (await this.leavingDetectionService.checkLeaving(name)) as any;
     if (!result) {

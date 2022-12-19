@@ -1,25 +1,16 @@
 // import {closeAlertButton} from "../js/camera"
-window.onload = () => {
-  console.log("hihih")
-  // logIn();
-  loadHeader();
-  loadNavBar();
-  loadFooter();
+// window.onload = () => {
   
-  closeAlertButton()
-  // initLoginForm();
-  // register()
-}
-function closeAlertButton() {
-	const el = document.querySelector('.close-alert')
-    el.addEventListener('click', async () => {
-        console.log(el.dataset.user)
-		await fetch(`/bye?name=${el.dataset.user}`)
-		
-	})
-}
-function loadHeader() {
-  console.log("im header");
+//   // logIn();
+//   loadHeader();
+//   loadNavBar();
+//   loadFooter();
+//   closeAlertButton()
+//   // initLoginForm();
+//   // register()
+// }
+
+export function loadHeader() {
   const header = document.querySelector(".header");
   const leftSide = document.createElement("div");
   leftSide.classList.add("left")
@@ -56,7 +47,7 @@ function loadNavBar() {
   console.log("im navbar");
   const nav = document.querySelector(".sideNav");
   const container = document.createElement("div");
-  container.classList.add("navContainer");
+  container.classList.add("navContainer");  ``
   const homeDiv = document.createElement("div");
   homeDiv.classList.add("homeDiv","navShare");
   const homeLogo = document.createElement("img");
@@ -113,6 +104,13 @@ function loadNavBar() {
 //   footerText.innerText = "ElderRing/ All rights reserved."
 //   footer.appendChild(footerText)
 // }
+export function loadFooter() {
+  const footer = document.querySelector(".footer");
+  const footerText = document.createElement("div");
+  footerText.classList.add("copyright");
+  footerText.innerText = "ElderRing/ All rights reserved."
+  footer.appendChild(footerText)
+}
 
 // function initLoginForm() {
 // 	document

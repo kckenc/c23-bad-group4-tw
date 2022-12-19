@@ -1,7 +1,15 @@
-export async function closeAlertButton() {
-	const el = document.querySelector('.close-alert')
-    el.addEventListener('click', async () => {
-        console.log(el.dataset.user)
+import{loadHeader, loadNavBar, loadFooter} from "../js/layout.js"
+
+window.onload = () => {
+  loadHeader();
+  loadNavBar();
+  loadFooter();
+  closeAlertButton();
+}
+
+function closeAlertButton() {
+	document.querySelector('#dylan').addEventListener('click', async () => {
+        console.log("lmsl")
 		await fetch('/bye')
 		
 	})
