@@ -4,10 +4,10 @@
 	background-color: #B7B7B7;
 	border: 1px solid #B7B7B7;
 	border-radius: 15px;
-	display: flex;
+	/* display: flex;
 	justify-content: center;
 	align-items:flex-start;
-	flex-direction: column;
+	flex-direction: column; */
 	margin-bottom: 100px;
 	padding: 100px;
 	font-size: 30px;
@@ -31,3 +31,17 @@
 	align-items: center;
 	flex-direction: column;
 }	
+
+.cam-container{
+	display: flex;
+	justify-content: center;
+	align-items:flex-start;
+	flex-direction: column;
+	color: #ffffff;
+}
+.revert{
+	border-radius: 15px;
+}
+.elder-name{
+	color: #000000;
+}
