@@ -13,13 +13,14 @@ export class LeavingDetectionController {
     }
     await this.leavingDetectionService.updateIsSolvedAlert(result.id);
     res.json({ message: "update successfully" });
-    this.io.emit("hello", { msg: "hello im socket io" });
+    this.io.emit("hello", name);
   };
 
   solved = async (req: Request, res: Response) => {
     const name = req.query.name as string;
+    console.log(name)
     const result = (await this.leavingDetectionService.checkLeaving(name)) as any;
-    console.log("jhsgdjshagdjhas", result);
+  
     if (!result) {
       res.status(400).json({ message: "invalid name" });
       return;

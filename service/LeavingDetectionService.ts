@@ -6,8 +6,9 @@ export class LeavingDetectionService {
   async checkLeaving(name:string){
     return await this.knex<LeavingDetection>("leaving_detection")
     .select("elderly.id", "elderly.name", "leaving_detection.is_solved","leaving_detection.updated_at")
-    .innerJoin("elderly", "leaving_detection.elderly_id", "elderly.id")
+    .rightJoin("elderly", "leaving_detection.elderly_id", "elderly.id")
     .where ("elderly.name", name)
+    // .andWhere("leaving_detection.is_solved",false)
     .first()
     .returning("elderly.id")
   }
@@ -18,6 +19,11 @@ export class LeavingDetectionService {
       is_solved: false,
       updated_at: new Date(),
     })
+    // .insert({ 
+    //   elderly_id: id,
+    //   is_solved: false,
+    //   updated_at: new Date(),
+    // })
     .returning('is_solved');
     
   }
