@@ -57,6 +57,7 @@ function initIframe() {
   const eleDiv = document.createElement("div");
   setAttributes(eleDiv,{"class": "eleDiv","hidden":""})
   const roomDiv = document.createElement("div");
+  setAttributes(roomDiv,{"class": "roomDiv"});
   const iFrame = document.createElement("iframe");
   setAttributes(iFrame, {
     class: "revert dylan",
@@ -73,14 +74,16 @@ function initIframe() {
   elderlyNameDiv.innerText = "Dylan";
 
   camMainDiv.appendChild(eleDiv);
-  eleDiv.appendChild(roomDiv);
-  eleDiv.appendChild(iFrame);
-  eleDiv.appendChild(closeAlert);
   eleDiv.appendChild(elderlyNameDiv);
+  eleDiv.appendChild(iFrame);
+  eleDiv.appendChild(roomDiv);
+  roomDiv.appendChild(closeAlert);
+  
 
   const eleDiv2 = document.createElement("div");
   setAttributes(eleDiv2,{"class": "eleDiv2","hidden":""})
   const roomDiv2 = document.createElement("div");
+  setAttributes(roomDiv2,{"class": "roomDiv"});
   const iFrame2 = document.createElement("iframe");
   setAttributes(iFrame2, {
     class: "revert ken",
@@ -96,14 +99,16 @@ function initIframe() {
   elderlyNameDiv2.innerText = "Ken";
 
   camMainDiv.appendChild(eleDiv2);
-  eleDiv2.appendChild(roomDiv2);
-  eleDiv2.appendChild(iFrame2);
-  eleDiv2.appendChild(closeAlert2);
   eleDiv2.appendChild(elderlyNameDiv2);
+  eleDiv2.appendChild(iFrame2);
+  eleDiv2.appendChild(roomDiv2);
+  roomDiv2.appendChild(closeAlert2);
+
 
   // const eleDiv3 = document.createElement("div");
   // setAttributes(eleDiv3,{"class": "eleDiv3","hidden":""})
   // const roomDiv3 = document.createElement("div");
+  // setAttributes(roomDiv3,{"class": "roomDiv"});
   // const iFrame3 = document.createElement("iframe");
   // setAttributes(iFrame3, {
   //   class: "revert",
@@ -119,10 +124,11 @@ function initIframe() {
   // elderlyNameDiv3.innerText = "Kyle";
 
   // camMainDiv.appendChild(eleDiv3);
-  // eleDiv3.appendChild(roomDiv3);
-  // eleDiv3.appendChild(iFrame3);
-  // eleDiv3.appendChild(closeAlert3);
   // eleDiv3.appendChild(elderlyNameDiv3);
+  // eleDiv3.appendChild(iFrame3);
+  // eleDiv3.appendChild(roomDiv3);
+  // roomDiv3.appendChild(closeAlert3);
+
 }
 
 function redirectSetting() {

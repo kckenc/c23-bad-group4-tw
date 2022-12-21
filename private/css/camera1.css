@@ -39,10 +39,12 @@
 @keyframes blink { 50% { border-color:#fff ; }  }
 
 .cam-container{
+	width: 800px;
 	display: flex;
 	justify-content: center;
 	align-items:flex-start;
-	flex-direction: column;
+	flex-wrap: wrap;
+	/* flex-direction: column; */
 	color: #ffffff;
 }
 .revert{
@@ -50,4 +52,36 @@
 }
 .elder-name{
 	color: #000000;
+}
+.close-alert{
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+	background-color: #272E33;
+	color: #ffffff;
+	font-size: 15px;
+	/* margin-left: 30px; */
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.close-alert:hover{
+	cursor: pointer;
+}
+
+#startbtn{
+	background-color: #272E33;
+	color: #ffffff;
+	width: 400px;
+	height: 250px;
+	border-radius: 15px;
+	font-size: 60px;
+}
+
+#startbtn:hover{
+	cursor: pointer;
+}
+
+.roomDiv{
+	display: flex;
+	justify-content: center;
 }
