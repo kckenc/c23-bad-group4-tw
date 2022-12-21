@@ -4,20 +4,24 @@ import type { Request, Response } from "express";
 import { UserService } from "../service/UserService";
 import { checkPassword, hashPassword } from "../utils/hash";
 
+
 export class UserController {
   constructor(private userService: UserService) {}
 
   login = async (req: Request, res: Response) => {
     const { username, password } = req.body;
-
+    console.log("test user controller", req.body);
     try {
       const user = await this.userService.checkLogin(username);
       const match = await checkPassword(password, user.password);
+      if(!username || !password) {
+        res.json({message: "Cannot be empty"});
+      }
       if (user.username && match) {
         req.session["user"] = { id: user.id, username: user.username };
-        res.status(200).json({ message: "success" });
-      }
-    } catch (e) {
+        res.status(200).json({message: "success"});
+        console.log(req.session["user"]);
+    }} catch (e) {
       res.status(400).json({ message: "invalid login" });
     }
   };

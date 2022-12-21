@@ -14,7 +14,7 @@ export class UserService {
         .select("id", "username", "password")
         .where("username", username)
         .first();
-      console.log(user);
+      // console.log(user);
       await trx.commit();
       return user;
       // if (user && (await checkPassword(plainPassword, user.password))) {

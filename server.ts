@@ -50,7 +50,7 @@ const userService = new UserService(knex);
 export const userController = new UserController(userService);
 
 import { userRoutes } from "./router/userRoutes";
-import { isLoggedInStatic } from "./guards";
+import { isLoggedInStatic } from "./utils/guards";
 app.use("/", userRoutes )
 
 
@@ -73,8 +73,9 @@ app.use("/", leavingDetectionRoutes);
 
 
 // ----- The line to serve static files -----
+
 app.use(express.static(path.join(__dirname, "public")));
-app.use(isLoggedInStatic, express.static(path.join(__dirname, 'private')))
+app.use(isLoggedInStatic, express.static(path.join(__dirname, 'private')));
 
 // ----- 404 Not Found -----
 app.use((req, res) => {

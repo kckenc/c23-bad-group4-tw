@@ -25,22 +25,22 @@ function loadHeader() {
   const welcomeDiv = document.createElement("h4");
   welcomeDiv.classList.add("welcome");
   welcomeDiv.innerText = "Hi";
-  // const logoutDiv = document.createElement("div");
-  // logoutDiv.classList.add("logoutDiv");
-  // const logoutLogo = document.createElement("img");
-  // logoutLogo.classList.add("logoutImg");
-  // logoutLogo.setAttribute("src", `./asset/logout.png`);
-  // const logoutWord = document.createElement("h4");
-  // logoutWord.classList.add("logoutWord", "text");
-  // logoutWord.innerText = "Logout";
+  const logoutDiv = document.createElement("div");
+  logoutDiv.classList.add("logoutDiv");
+  const logoutLogo = document.createElement("img");
+  logoutLogo.classList.add("logoutImg");
+  logoutLogo.setAttribute("src", `./asset/logout.png`);
+  const logoutWord = document.createElement("h4");
+  logoutWord.classList.add("logoutWord", "text");
+  logoutWord.innerText = "Logout";
 
   header.appendChild(leftSide);
   leftSide.appendChild(logoDiv);
   leftSide.appendChild(titleDiv);
   header.appendChild(rightSide);
   rightSide.appendChild(welcomeDiv);
-  // rightSide.appendChild(logoutLogo);
-  // rightSide.appendChild(logoutWord);
+  rightSide.appendChild(logoutLogo);
+  rightSide.appendChild(logoutWord);
 }
 
 function loadNavBar() {

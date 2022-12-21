@@ -1,17 +1,12 @@
 import type { Request, Response, NextFunction } from "express";
-import { UnauthorizedError } from "./error";
-
-export const isLoggedInAPI = (req: Request, res: Response, next: NextFunction) => {
-  if (!req.session["user"]) {
-    throw new UnauthorizedError();
-  }
-  next();
-};
 
 export const isLoggedInStatic = (req: Request, res: Response, next: NextFunction) => {
-  if (!req.session["user"]) {
-    res.redirect("/login.html");
-    return;
+  console.log("guard", req.session["user"]);
+  if (req.session["user"]) {
+    console.log("login success", req.session["user"]);
+    next();
+  } else {
+    res.redirect("/");
+    console.log("login fail bitch");
   }
-  next();
 };

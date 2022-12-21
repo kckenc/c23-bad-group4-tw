@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="./css/layout1.css" />
+        <link rel="stylesheet" href="./css/camera1.css" />
+
+        <title>Elder Ring</title>
+    </head>
+    <body>
+        <header class="header"></header>
+        <div class="contentContainer">
+            <nav class="sideNav"></nav>
+            <div class="content">
+                <div class="welcome-container">
+                    <div class="welcome-tips">Welcome Ken</div>
+                    <div class="company">ELDER RING</div>
+                    <div>Choose your camera to zoom in</div>
+                </div>
+
+                <div class="cam-container">
+                    <!-- <div>Room A</div>
+                    <iframe
+                        class="revert"
+                        src="http://192.168.160.78:5431"
+                        width="350"
+                        height="200"
+                    >
+                    </iframe>
+                    <button class="close-alert" data-user="dylan">close alert</button>
+                    <div class="elder-name">Dylan</div>
+                    <div>Room B</div>
+                    <iframe
+                        class="revert"
+                        src="http://192.168.160.149:5430"
+                        width="350"
+                        height="200"
+                    >
+                    </iframe>
+                    <button class="close-alert" data-user="ken">close alert</button>
+                    <div class="elder-name">Ken</div>
+                    <div>Room C</div>
+                    <iframe
+                        class="revert"
+                        src="http://192.168.160.25:5432"
+                        width="350"
+                        height="200"
+                    >
+                    </iframe>
+                    <button class="close-alert" data-user="kyle">close alert</button>
+                    <div class="elder-name">Kyle</div> -->
+                </div>
+                <button id="startbtn">開始監察</button>
+                <audio
+                    id="music"
+                    src="dd.mp3"
+                    style="display: none"
+                ></audio>
+            </div>
+        </div>
+        <footer class="footer"></footer>
+        <script src="./js/layout1.js"></script>
+        <script src="./js/camera1.js"></script>
+    </body>
+</html>
