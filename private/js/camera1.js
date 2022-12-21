@@ -11,6 +11,8 @@ window.onload = () => {
   initIframe();
   closeAlertButton();
   redirectSetting();
+  redirectCam();
+  redirectHome();
 
   startbtn.addEventListener("click", () => {
     startbtn.style.display = "none";
@@ -124,8 +126,21 @@ function initIframe() {
 }
 
 function redirectSetting() {
-  const settingBtn = document.querySelector(".camDiv");
+  const settingBtn = document.querySelector(".settingDiv");
   settingBtn.addEventListener("click", () => {
     window.location.href = "/setting.html";
+  });
+}
+function redirectCam() {
+  const settingBtn = document.querySelector(".camDiv");
+  settingBtn.addEventListener("click", () => {
+    window.location.href = "/camera1.html";
+  });
+}
+
+function redirectHome() {
+  const settingBtn = document.querySelector(".homeDiv");
+  settingBtn.addEventListener("click", () => {
+    window.location.href = "/camera1.html";
   });
 }
