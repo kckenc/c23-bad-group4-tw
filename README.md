@@ -1,4 +1,6 @@
 # c23-bad-group4-tw
+Ai Camera python link:
+https://github.com/TimDylanHo/c23-bad-group4-tw-AI
 
 <<<<<<< HEAD
 
